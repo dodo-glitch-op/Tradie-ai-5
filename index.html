@@ -44,7 +44,30 @@ main{padding:16px}.page{display:none}.page.active{display:block}
 .toast{position:fixed;left:50%;bottom:94px;transform:translateX(-50%) translateY(15px);background:#101828;color:#fff;padding:11px 14px;border-radius:12px;font-size:12px;opacity:0;pointer-events:none;z-index:200;transition:.2s}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 @media(min-width:700px){body{padding:20px}.app{border-radius:28px;overflow:hidden;box-shadow:0 20px 70px #10182818}}
 </style>
-<style id="v5-styles">.v5-card{background:#fff;border:1px solid #e4e6e8;border-radius:18px;padding:16px;margin:12px 0;box-shadow:0 4px 18px rgba(0,0,0,.04)}.v5-tabs{display:flex;gap:7px;overflow:auto;padding:4px 0 8px}.v5-tabs button{white-space:nowrap;border:1px solid #ddd;background:#fff;border-radius:999px;padding:8px 12px;font-weight:700}.v5-tabs button.active{background:#111;color:#fff}.v5-panel{display:none}.v5-panel.active{display:block}.v5-btn{border:0;border-radius:12px;padding:11px 13px;font-weight:700;background:#111;color:#fff}.v5-btn.secondary{background:#eef0f3;color:#111}.v5-input{width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid #d9dde2;border-radius:11px;margin:5px 0 9px}.v5-title{font-size:18px;font-weight:800;margin-bottom:8px}.v5-muted{color:#68707a;font-size:13px}.v5-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #eee}.v5-actions{display:flex;gap:7px;flex-wrap:wrap}.invoice-paper{background:#fff;color:#111;border:1px solid #ddd;border-radius:10px;padding:22px;margin-top:10px}.invoice-head{display:flex;justify-content:space-between;gap:20px;border-bottom:2px solid #111;padding-bottom:15px}.invoice-total{font-size:24px;font-weight:900}@media(max-width:600px){.invoice-head{flex-direction:column}}</style></head>
+<style id="v5-styles">.v5-card{background:#fff;border:1px solid #e4e6e8;border-radius:18px;padding:16px;margin:12px 0;box-shadow:0 4px 18px rgba(0,0,0,.04)}.v5-tabs{display:flex;gap:7px;overflow:auto;padding:4px 0 8px}.v5-tabs button{white-space:nowrap;border:1px solid #ddd;background:#fff;border-radius:999px;padding:8px 12px;font-weight:700}.v5-tabs button.active{background:#111;color:#fff}.v5-panel{display:none}.v5-panel.active{display:block}.v5-btn{border:0;border-radius:12px;padding:11px 13px;font-weight:700;background:#111;color:#fff}.v5-btn.secondary{background:#eef0f3;color:#111}.v5-input{width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid #d9dde2;border-radius:11px;margin:5px 0 9px}.v5-title{font-size:18px;font-weight:800;margin-bottom:8px}.v5-muted{color:#68707a;font-size:13px}.v5-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #eee}.v5-actions{display:flex;gap:7px;flex-wrap:wrap}.invoice-paper{background:#fff;color:#111;border:1px solid #ddd;border-radius:10px;padding:22px;margin-top:10px}.invoice-head{display:flex;justify-content:space-between;gap:20px;border-bottom:2px solid #111;padding-bottom:15px}.invoice-total{font-size:24px;font-weight:900}@media(max-width:600px){.invoice-head{flex-direction:column}}</style>
+<style id="v7-connected-styles">
+.v7-connect{border:1px solid #dfe3e8;border-radius:16px;padding:14px;margin:10px 0;background:#fff}
+.v7-connect-head{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.v7-status{font-size:12px;font-weight:800;padding:5px 9px;border-radius:999px;background:#eef0f3}
+.v7-status.ready{background:#e7f6ed;color:#146c43}
+.v7-source{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.v7-source button{padding:12px;border-radius:12px;border:1px solid #ddd;background:#fff;font-weight:800}
+.v7-file{border:1px solid #e6e8eb;border-radius:12px;padding:10px;margin-top:8px}
+.v7-confidence{font-size:11px;font-weight:800}
+.v7-review{background:#fff8e6;border:1px solid #f0d58c;border-radius:12px;padding:10px;margin-top:10px}
+@media(max-width:600px){.v7-source{grid-template-columns:1fr}}
+</style>
+
+<style id="v8-followup-styles">
+.v8-follow{border:1px solid #dfe3e8;border-radius:16px;padding:14px;margin:10px 0;background:#fff}
+.v8-follow-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.v8-follow-item{border:1px solid #e6e8eb;border-radius:12px;padding:11px;margin-top:8px}
+.v8-tag{display:inline-block;padding:4px 8px;border-radius:999px;background:#eef0f3;font-size:11px;font-weight:800}
+.v8-tag.due{background:#fff1d6}
+.v8-tag.ready{background:#e7f6ed}
+@media(max-width:600px){.v8-follow-grid{grid-template-columns:1fr}}
+</style>
+</head>
 <body>
 <div class="app">
 <header class="topbar">
@@ -60,7 +83,14 @@ main{padding:16px}.page{display:none}.page.active{display:block}
   <p>Tell me what happened in plain English. I’ll organise the job, money, people and reminders for you.</p>
   <div class="airow"><textarea id="command" placeholder='“Jake worked 7.5 hours on Dave’s job and we bought $340 of materials”'></textarea><button class="speak" onclick="startVoice()">🎙️</button></div>
   <div class="ai-actions"><button class="btn primary" onclick="runCommand()">✨ Run with AI</button><button class="btn light" onclick="openModal('examplesModal')">Examples</button></div>
-  <div id="voiceStatus" class="tiny" style="color:#d0d5dd;margin-top:8px"></div>
+  <div class="command-chips" style="display:flex;gap:6px;overflow:auto;margin-top:10px;padding-bottom:2px">
+<button class="btn light" onclick="command.value='Invoice Dave $1,850 for the hot-water job'">Invoice</button>
+<button class="btn light" onclick="command.value='Jake worked 7.5 hours on Dave’s job'">Hours</button>
+<button class="btn light" onclick="command.value='I spent $340 on materials for Dave’s job'">Expense</button>
+<button class="btn light" onclick="command.value='Put Dave’s job Thursday at 9am and assign Jake'">Schedule</button>
+<button class="btn light" onclick="command.value='Remind me Friday to invoice Dave'">Reminder</button>
+<button class="btn light" onclick="command.value='What am I forgetting?'">Check</button>
+</div><div id="voiceStatus" class="tiny" style="color:#d0d5dd;margin-top:8px"></div>
  </div>
 
  <div class="metrics">
@@ -161,7 +191,22 @@ main{padding:16px}.page{display:none}.page.active{display:block}
  <button class="btn dark" style="width:100%" onclick="saveProfile()">Save profile</button></div></div>
 
 <div id="examplesModal" class="modal"><div class="sheet"><div class="sheethead"><h2>Talk to your business</h2><button class="close" onclick="closeModal('examplesModal')">×</button></div>
- <div class="listrow"><div class="rowmain"><b>Log labour</b><span>“Jake worked 7.5 hours on Dave’s job.”</span></div></div>
+ <div class="listrow"><div class="rowmain"><b>Log labour</b><span>“Jake worked 7.5 hours on Dave’s bathroom job.”</span></div></div>
+<div class="listrow"><div class="rowmain"><b>Log an expense</b><span>“I spent $340 at Reece on materials for Dave’s job.”</span></div></div>
+<div class="listrow"><div class="rowmain"><b>Create a customer</b><span>“Add John Smith, 0412 345 678, john@email.com.”</span></div></div>
+<div class="listrow"><div class="rowmain"><b>Create a job</b><span>“Create a job for Sarah’s kitchen renovation for $4,800.”</span></div></div>
+<div class="listrow"><div class="rowmain"><b>Update a job</b><span>“Mark Sarah’s kitchen job complete.”</span></div></div>
+<div class="listrow"><div class="rowmain"><b>Create a quote</b><span>“Quote Dave $2,450 for the bathroom repair.”</span></div></div>
+<div class="listrow"><div class="rowmain"><b>Create an invoice</b><span>“Invoice Dave $1,850 for the hot-water job, due in 14 days.”</span></div></div>
+<div class="listrow"><div class="rowmain"><b>Record payment</b><span>“Dave paid $1,850 by bank transfer.”</span></div></div>
+<div class="listrow"><div class="rowmain"><b>Set a reminder</b><span>“Remind me Friday to invoice Dave.”</span></div></div>
+<div class="listrow"><div class="rowmain"><b>Schedule a job</b><span>“Put Dave’s bathroom job in Thursday at 9am and assign Jake.”</span></div></div>
+<div class="listrow"><div class="rowmain"><b>Reschedule</b><span>“Move Sarah’s job from Tuesday to Friday at 10am.”</span></div></div>
+<div class="listrow"><div class="rowmain"><b>Business question</b><span>“What am I still owed?” / “What did I make this month?”</span></div></div>
+<div class="listrow"><div class="rowmain"><b>Customer question</b><span>“What jobs and invoices does Dave have?”</span></div></div>
+<div class="listrow"><div class="rowmain"><b>Worker question</b><span>“How many hours has Jake worked and what is his estimated pay?”</span></div></div>
+<div class="listrow"><div class="rowmain"><b>Follow-up</b><span>“Who needs a follow-up this week?”</span></div></div>
+<div class="listrow"><div class="rowmain"><b>AI check</b><span>“What am I forgetting?” / “Show me anything overdue.”</span></div></div>
  <div class="listrow"><div class="rowmain"><b>Record an expense</b><span>“I bought $340 of materials for Dave’s job.”</span></div></div>
  <div class="listrow"><div class="rowmain"><b>Create an invoice</b><span>“Invoice Sarah $1,850 for the hot-water job.”</span></div></div>
  <div class="listrow"><div class="rowmain"><b>Set a reminder</b><span>“Remind me Friday to invoice Dave.”</span></div></div>
@@ -206,30 +251,156 @@ function startVoice(){
 function runCommand(){
  const t=command.value.trim();if(!t)return;
  const low=t.toLowerCase();
- const hoursM=t.match(/(\d+(?:\.\d+)?)\s*(?:hours?|hrs?)/i);
- const moneyM=t.match(/\$(\d+(?:\.\d+)?)/);
- const rateM=t.match(/\$(\d+(?:\.\d+)?)\s*(?:an?\s*)?(?:hour|hr)/i);
- const person=d.people.find(p=>low.includes(p.name.toLowerCase()));
- const job=d.jobs.find(j=>low.includes(j.customer.toLowerCase())||low.includes(j.name.toLowerCase()));
+ const moneyM=t.match(/\$?\s*([\d,]+(?:\.\d{1,2})?)/);
+ const hoursM=t.match(/(\d+(?:\.\d+)?)\s*(?:hours?|hrs?|h)\b/i);
+ const rateM=t.match(/(?:at|@)\s*\$?\s*(\d+(?:\.\d+)?)\s*(?:\/\s*hr|per\s*hour|an?\s*hour)?/i);
+ const names=d.people.map(p=>p.name).sort((a,b)=>b.length-a.length);
+ const person=names.map(n=>({name:n,obj:d.people.find(p=>p.name.toLowerCase()===n.toLowerCase())})).find(x=>low.includes(x.name.toLowerCase()));
+ const customerMatch=t.match(/(?:for|customer|client)\s+([A-Z][A-Za-z0-9 '&.-]{1,40}?)(?=\s+(?:job|at|on|for|and|due|tomorrow|today|next|$))/i);
+ const knownCustomer=d.jobs.map(j=>j.customer).concat(d.invoices.map(i=>i.customer),d.expenses.map(e=>e.customer||'')).filter(Boolean).sort((a,b)=>b.length-a.length).find(n=>low.includes(n.toLowerCase()));
+ const cust=knownCustomer||((customerMatch&&customerMatch[1])?customerMatch[1].trim():null);
+
+ function findCustomer(name){
+   return d.jobs.find(j=>j.customer&&j.customer.toLowerCase()===String(name).toLowerCase())?.customer ||
+          d.invoices.find(i=>i.customer&&i.customer.toLowerCase()===String(name).toLowerCase())?.customer ||
+          name;
+ }
+ function dateText(s){
+   const today=new Date(), dayNames=['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+   const m=String(s||'').toLowerCase();
+   if(m==='today') return today.toISOString().slice(0,10);
+   if(m==='tomorrow'){today.setDate(today.getDate()+1);return today.toISOString().slice(0,10)}
+   const idx=dayNames.indexOf(m);
+   if(idx>=0){let delta=(idx-today.getDay()+7)%7;if(delta===0)delta=7;today.setDate(today.getDate()+delta);return today.toISOString().slice(0,10)}
+   return s||'';
+ }
+
+ // Questions / dashboard intelligence
+ if(/what (?:am i|have i) (?:forgetting|missing)|anything (?:overdue|i need to do)|what needs attention|show me anything overdue/i.test(low)){
+   const overdue=d.reminders.filter(r=>r.date&&r.date<=new Date().toISOString().slice(0,10)&&!r.done);
+   const unpaid=d.invoices.filter(i=>i.status!=='Paid');
+   const msg=`Attention: ${overdue.length} overdue reminder(s), ${unpaid.length} unpaid invoice(s), ${d.jobs.filter(j=>j.status!=='Complete').length} open job(s), ${d.expenses.length} expense record(s).`;
+   addActivity('AI check: '+msg);toast(msg);command.value='';return;
+ }
+ if(/what am i still owed|who owes me|outstanding/i.test(low)){
+   const total=d.invoices.filter(i=>i.status!=='Paid').reduce((s,i)=>s+(+i.amount||0),0);
+   toast('Outstanding invoices: '+money(total));addActivity('AI checked outstanding invoices');command.value='';return;
+ }
+ if(/what did i make|revenue|made this month|income this month/i.test(low)){
+   const total=d.invoices.filter(i=>i.status==='Paid'||/this month/i.test(low)).reduce((s,i)=>s+(+i.amount||0),0);
+   const all=d.invoices.reduce((s,i)=>s+(+i.amount||0),0);
+   toast('Invoiced: '+money(all)+' · Paid invoices: '+money(total));addActivity('AI checked business revenue');command.value='';return;
+ }
+ if(/how many hours.*\b(jake|worker|employee|subcontractor)|estimated pay.*\b(jake|worker)/i.test(low) && person){
+   const h=person.obj.hours.reduce((s,x)=>s+x.hours,0), pay=h*person.obj.rate;
+   toast(`${person.name}: ${h.toFixed(1)} hours · estimated pay ${money(pay)}`);command.value='';return;
+ }
+ if(/what jobs.*(?:does|has)|what invoices.*(?:does|has)|tell me about .*customer/i.test(low) && cust){
+   const jobs=d.jobs.filter(j=>j.customer&&j.customer.toLowerCase()===cust.toLowerCase());
+   const inv=d.invoices.filter(i=>i.customer&&i.customer.toLowerCase()===cust.toLowerCase());
+   toast(`${cust}: ${jobs.length} job(s), ${inv.length} invoice(s), ${money(inv.filter(i=>i.status!=='Paid').reduce((s,i)=>s+i.amount,0))} outstanding`);
+   command.value='';return;
+ }
+
+ // Add customer
+ if(/^(add|create|save).*(customer|client)|add .*,\s*(?:04|\+?61)/i.test(low)){
+   let m=t.match(/(?:add|create|save)\s+(?:a\s+)?(?:customer|client)?\s*[:\-]?\s*([A-Za-z][A-Za-z '&.-]{1,50})/i);
+   let name=(m&&m[1]||t.split(',')[0].replace(/^(add|create|save)\s+/i,'')).trim();
+   if(name.length>2){
+     const phone=(t.match(/(?:\+?61|0)\d[\d\s-]{7,}/)||[''])[0].trim();
+     const email=(t.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i)||[''])[0];
+     const existing=(window.v5AddCustomer&&false);
+     d.customers=d.customers||[];
+     if(!d.customers.some(c=>c.name.toLowerCase()===name.toLowerCase())) d.customers.push({id:Date.now(),name,phone,email,address:'',jobs:[],invoices:[],payments:[],notes:[]});
+     addActivity('Added customer '+name);save();toast('Customer added: '+name);command.value='';render();return;
+   }
+ }
+
+ // Log expense / receipt
+ if(/expense|spent|bought|receipt|materials|fuel|diesel|petrol/i.test(low) && moneyM && !/invoice|quote/i.test(low)){
+   const amount=+moneyM[1].replace(/,/g,'');
+   const supplier=(t.match(/(?:at|from)\s+([A-Za-z][A-Za-z0-9 &.'-]{1,35})/i)||[])[1]||'Business expense';
+   d.expenses.unshift({amount,supplier,customer:cust||'',date:new Date().toISOString(),desc:t});
+   addActivity('Recorded '+money(amount)+' expense');save();toast('Expense recorded: '+money(amount));command.value='';render();return;
+ }
+
+ // Log person hours
+ if(hoursM && person){
+   const h=+hoursM[1];person.obj.hours.push({date:new Date().toISOString(),hours:h});
+   addActivity('Logged '+h+'h for '+person.name);save();toast('Logged '+h+' hours for '+person.name);command.value='';render();return;
+ }
+
+ // General hours
  if(hoursM){
-   const h=+hoursM[1];
-   if(person){person.hours.push({date:new Date().toISOString(),hours:h});addActivity('Logged '+h+'h for '+person.name)}
-   else {const r=rateM?+rateM[1]:d.rate;d.hours.push({date:new Date().toISOString(),hours:h,rate:r,job:job?.customer||''});addActivity('Logged '+h+'h at '+money(r)+'/hr'+(job?' on '+job.customer:''))}
-   toast('Hours logged');
- }else if(/bought|spent|expense|receipt|materials/i.test(t)&&moneyM){
-   d.expenses.unshift({name:'AI captured expense',amount:+moneyM[1],job:job?.customer||'',date:new Date().toISOString()});addActivity('Captured '+money(+moneyM[1])+' expense');toast('Expense captured');
- }else if(/invoice/i.test(t)&&moneyM){
-   const cust=job?.customer||t.replace(/.*invoice\s+/i,'').split(/\s+\$/)[0].trim()||'Customer';
-   d.invoices.unshift({customer:cust,desc:t,amount:+moneyM[1],status:'Draft',date:new Date().toISOString()});addActivity('Drafted invoice for '+cust);toast('Invoice draft created');
- }else if(/remind|reminder/i.test(t)){
-   d.reminders.unshift({text:t.replace(/.*remind me\s*(?:to)?/i,'').trim()||t,date:'',done:false});addActivity('Created reminder');toast('Reminder created');
- }else if(/what.*owed|outstanding/i.test(t)){showPage('money');toast('Showing outstanding money')}
- else if(/how.*month|how.*week|snapshot|report/i.test(t)){showPage('reports');toast('Showing business report')}
- else {toast('Try one of the Examples');openModal('examplesModal')}
+   const h=+hoursM[1], rate=rateM?+rateM[1]:d.rate;
+   d.hours.push({date:new Date().toISOString(),hours:h,rate,job:cust||''});
+   addActivity('Logged '+h+'h'+(cust?' for '+cust:''));save();toast('Hours logged: '+h+'h');command.value='';render();return;
+ }
+
+ // Quote
+ if(/quote|estimate/i.test(low) && moneyM){
+   const amount=+moneyM[1].replace(/,/g,'');
+   const customer=cust||'Customer';
+   d.quotes=d.quotes||[];
+   d.quotes.unshift({customer,desc:t,amount,status:'Draft',date:new Date().toISOString()});
+   addActivity('Drafted quote for '+customer);save();toast('Quote draft created for '+customer);command.value='';render();return;
+ }
+
+ // Invoice
+ if(/invoice|bill\b/i.test(low) && moneyM){
+   const amount=+moneyM[1].replace(/,/g,'');
+   const customer=cust||'Customer';
+   d.invoices.unshift({customer,desc:t,amount,status:'Draft',date:new Date().toISOString()});
+   addActivity('Drafted invoice for '+customer);save();toast('Invoice draft created for '+customer);command.value='';render();return;
+ }
+
+ // Payment
+ if(/paid|payment|received|bank transfer|cash payment/i.test(low) && moneyM){
+   const amount=+moneyM[1].replace(/,/g,'');
+   const customer=cust||'Customer';
+   d.payments=d.payments||[];
+   d.payments.unshift({customer,amount,date:new Date().toISOString(),method:/cash/i.test(low)?'Cash':'Bank'});
+   let inv=d.invoices.find(i=>i.customer&&i.customer.toLowerCase()===customer.toLowerCase()&&i.status!=='Paid');
+   if(inv && amount>=inv.amount)inv.status='Paid';
+   addActivity('Recorded payment of '+money(amount)+' from '+customer);save();toast('Payment recorded: '+money(amount));command.value='';render();return;
+ }
+
+ // Job create/update
+ if(/(?:create|add|book).*job|new job/i.test(low)){
+   const value=moneyM?+moneyM[1].replace(/,/g,''):0, customer=cust||'Customer';
+   d.jobs.push({name:(t.match(/job\s+(?:for\s+)?(.+?)(?:\s+for\s+\$|\s+at\s+\$|$)/i)||[])[1]||'New job',customer,value,status:'Booked'});
+   addActivity('Created job for '+customer);save();toast('Job created for '+customer);command.value='';render();return;
+ }
+ if(/mark .*job .*complete|complete .*job/i.test(low) && cust){
+   const j=d.jobs.find(j=>j.customer&&j.customer.toLowerCase()===cust.toLowerCase()&&j.status!=='Complete');
+   if(j){j.status='Complete';addActivity('Marked '+cust+' job complete');save();toast('Job marked complete');command.value='';render();return}
+ }
+
+ // Schedule / reschedule
+ if(/schedule|put .*job .*at|book .*at|reschedule|move .*job/i.test(low)){
+   const day=(low.match(/\b(today|tomorrow|monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/)||[])[1]||'';
+   const tm=(t.match(/\b(\d{1,2})(?::(\d{2}))?\s*(am|pm)?\b/i)||[]);
+   let time=tm[1]?(tm[1]+(tm[2]?':'+tm[2]:':00')+(tm[3]?' '+tm[3].toUpperCase():'')):'';
+   const who=person?person.name:'';
+   d.appointments=d.appointments||[];
+   d.appointments.push({id:Date.now(),title:(cust||'Job')+' job',date:dateText(day),time,person:who,status:'Booked'});
+   addActivity((/reschedule|move .*job/i.test(low)?'Rescheduled ':'Scheduled ')+(cust||'job'));
+   save();toast((/reschedule|move .*job/i.test(low)?'Job rescheduled':'Job scheduled'));command.value='';render();return;
+ }
+
+ // Reminder
+ if(/remind|reminder|remember to/i.test(low)){
+   const day=(low.match(/\b(today|tomorrow|monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/)||[])[1]||'';
+   const reminder=t.replace(/.*?(?:remind me|reminder|remember to)\s*(?:to)?\s*/i,'').trim()||t;
+   d.reminders.unshift({text:reminder,date:dateText(day),done:false});
+   addActivity('Created reminder: '+reminder);save();toast('Reminder created');command.value='';render();return;
+ }
+
+ // Fallback
+ toast('I understood the request, but this prototype needs a more specific command. Try “invoice Dave $1,850”, “Jake worked 7.5 hours”, “I spent $340 on materials”, or “schedule Dave Thursday 9am”.');
+ addActivity('AI could not safely action: '+t);
  command.value='';
- save();
-}
-function filterJobs(mode,btn){document.querySelectorAll('.jobsfilter').forEach(x=>{});document.querySelectorAll('#jobs .tab').forEach(x=>x.classList.remove('active'));btn.classList.add('active');renderJobs(mode)}
+}function filterJobs(mode,btn){document.querySelectorAll('.jobsfilter').forEach(x=>{});document.querySelectorAll('#jobs .tab').forEach(x=>x.classList.remove('active'));btn.classList.add('active');renderJobs(mode)}
 function renderJobs(mode='all'){
  let list=d.jobs;if(mode==='active')list=list.filter(j=>j.status==='Active');if(mode==='quoted')list=list.filter(j=>j.status==='Quoted');if(mode==='complete')list=list.filter(j=>j.status==='Complete');
  jobList.innerHTML=list.length?list.map(j=>{const hrs=d.hours.filter(x=>x.job===j.customer).reduce((s,x)=>s+x.hours,0);return `<div class="card"><div class="listrow" style="border:0;padding:0"><div class="rowmain"><b>${esc(j.name)}</b><span>${esc(j.customer)} · ${hrs.toFixed(1)}h logged</span></div><span class="badge ${j.status==='Complete'?'green':j.status==='Quoted'?'orange':''}">${esc(j.status)}</span></div><div class="statline" style="margin-top:9px"><span>Job value</span><b>${money(j.value)}</b></div></div>`}).join(''):'<div class="card empty">No jobs in this view.</div>';
@@ -260,4 +431,130 @@ function exportData(){const a=document.createElement('a');a.href='data:applicati
 bizName.value=d.business;owner.value=d.owner;rate.value=d.rate;
 render();
 </script>
-<section id="v5-hub" style="margin:16px 0"><div class="v5-card"><div class="v5-title">AI Business Hub</div><div class="v5-muted">Customers, calendar, professional invoices, email and bank workspace.</div><div class="v5-tabs" id="v5-tabs"><button class="active" data-v5="customers">Customers</button><button data-v5="calendar">Calendar</button><button data-v5="invoices">Invoices</button><button data-v5="email">Email</button><button data-v5="bank">Bank</button></div></div><div class="v5-panel active" id="v5-customers"><div class="v5-card"><div class="v5-title">Customers</div><input class="v5-input" id="v5-search" placeholder="Search customers"><button class="v5-btn" onclick="v5AddCustomer()">+ Add customer</button><div id="v5-customers-list"></div></div><div class="v5-card" id="v5-customer-detail"><div class="v5-muted">Select a customer to see their business record.</div></div></div><div class="v5-panel" id="v5-calendar"><div class="v5-card"><div class="v5-title">Calendar</div><div class="v5-actions"><button class="v5-btn secondary" onclick="v5Cal('day')">Day</button><button class="v5-btn secondary" onclick="v5Cal('week')">Week</button><button class="v5-btn secondary" onclick="v5Cal('month')">Month</button><button class="v5-btn" onclick="v5AddAppt()">+ Appointment</button></div><div id="v5-calendar-list"></div></div></div><div class="v5-panel" id="v5-invoices"><div class="v5-card"><div class="v5-title">Professional invoices</div><div class="v5-muted">Customer-ready invoice preview with numbering, dates, line items, GST and payment details.</div><p><button class="v5-btn" onclick="v5NewInvoice()">+ New invoice</button></p><div id="v5-invoices-list"></div><div id="v5-invoice-preview"></div></div></div><div class="v5-panel" id="v5-email"><div class="v5-card"><div class="v5-title">Business email</div><div class="v5-muted">Secure Gmail/Outlook OAuth connection will be added through the production backend. The AI will classify enquiries, quote requests, job changes and invoices, then draft replies for approval.</div><button class="v5-btn" onclick="alert('Email connection is reserved for the secure OAuth/backend phase.')">Connect email</button></div></div><div class="v5-panel" id="v5-bank"><div class="v5-card"><div class="v5-title">Bank & payments</div><div class="v5-muted">Secure open-banking connection will be added through a backend/provider. No bank passwords are collected here.</div><div class="v5-row"><span>Customer payments</span><b>Match to invoice</b></div><div class="v5-row"><span>Supplier transactions</span><b>Categorise</b></div><div class="v5-row"><span>Unmatched payments</span><b>Review</b></div><button class="v5-btn" style="margin-top:12px" onclick="alert('Bank connection is reserved for the secure backend/open-banking phase.')">Connect bank</button></div></div></section><script>(function(){const K='tradieAI_v5';let d=JSON.parse(localStorage.getItem(K)||'null')||{customers:[],appts:[],invoices:[]};const save=()=>localStorage.setItem(K,JSON.stringify(d));const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));const money=n=>'$'+Number(n||0).toFixed(2);function customers(){let q=(document.getElementById('v5-search').value||'').toLowerCase();document.getElementById('v5-customers-list').innerHTML=d.customers.filter(c=>(c.name+' '+c.phone+' '+c.email).toLowerCase().includes(q)).map(c=>'<div class="v5-row"><div><b>'+esc(c.name)+'</b><div class="v5-muted">'+esc(c.phone||'')+' · '+esc(c.email||'')+'</div></div><button class="v5-btn secondary" onclick="v5OpenCustomer(''+c.id+'')">Open</button></div>').join('')||'<p class="v5-muted">No customers yet.</p>'}window.v5AddCustomer=()=>{let n=prompt('Customer name');if(!n)return;d.customers.push({id:Date.now(),name:n,phone:prompt('Phone (optional)')||'',email:prompt('Email (optional)')||'',address:prompt('Address (optional)')||'',jobs:[],invoices:[],payments:[],notes:[]});save();customers()};window.v5OpenCustomer=id=>{let c=d.customers.find(x=>String(x.id)===String(id));document.getElementById('v5-customer-detail').innerHTML='<div class="v5-title">'+esc(c.name)+'</div><div class="v5-muted">'+esc(c.phone||'No phone')+' · '+esc(c.email||'No email')+'<br>'+esc(c.address||'No address')+'</div><p><b>Jobs:</b> '+c.jobs.length+' &nbsp; <b>Invoices:</b> '+c.invoices.length+' &nbsp; <b>Payments:</b> '+c.payments.length+'</p><div class="v5-muted">This customer record is designed to become the single place for jobs, money, communication, calendar and AI history.</div>'};window.v5Cal=mode=>{document.getElementById('v5-calendar-list').innerHTML='<div class="v5-card"><b>'+mode.toUpperCase()+' VIEW</b></div>'+d.appts.map(a=>'<div class="v5-row"><div><b>'+esc(a.title)+'</b><div class="v5-muted">'+esc(a.date)+' '+esc(a.time)+' · '+esc(a.person||'Unassigned')+'</div></div><span>'+esc(a.status||'Booked')+'</span></div>').join('')};window.v5AddAppt=()=>{let t=prompt('Job / appointment');if(!t)return;d.appts.push({title:t,date:prompt('Date YYYY-MM-DD')||'',time:prompt('Time')||'',person:prompt('Assign person')||'',status:'Booked'});save();v5Cal('week')};window.v5NewInvoice=()=>{let c=prompt('Customer');if(!c)return;let j=prompt('Job description')||'Services',l=+prompt('Labour total')||0,m=+prompt('Materials total')||0,s=l+m,g=+(s*.1).toFixed(2);d.invoices.push({id:Date.now(),number:'INV-'+String(d.invoices.length+1).padStart(4,'0'),customer:c,job:j,labour:l,materials:m,subtotal:s,gst:g,total:s+g,date:new Date().toISOString().slice(0,10),due:new Date(Date.now()+14*864e5).toISOString().slice(0,10),status:'Draft'});save();invoices()};function invoices(){document.getElementById('v5-invoices-list').innerHTML=d.invoices.map(i=>'<div class="v5-row"><div><b>'+i.number+'</b> · '+esc(i.customer)+'<div class="v5-muted">'+esc(i.job)+' · '+money(i.total)+'</div></div><button class="v5-btn secondary" onclick="v5PreviewInvoice(''+i.id+'')">Preview</button></div>').join('')||'<p class="v5-muted">No invoices yet.</p>'}window.v5PreviewInvoice=id=>{let i=d.invoices.find(x=>String(x.id)===String(id));document.getElementById('v5-invoice-preview').innerHTML='<div class="invoice-paper"><div class="invoice-head"><div><div style="font-size:28px;font-weight:900">INVOICE</div><b>'+i.number+'</b><div class="v5-muted">Issued '+i.date+' · Due '+i.due+'</div></div><div><b>YOUR BUSINESS</b><div class="v5-muted">ABN · Phone · Email</div></div></div><div style="margin:18px 0"><b>Bill to</b><div>'+esc(i.customer)+'</div><div class="v5-muted">'+esc(i.job)+'</div></div><div class="v5-row"><span>Labour / services</span><b>'+money(i.labour)+'</b></div><div class="v5-row"><span>Materials</span><b>'+money(i.materials)+'</b></div><div class="v5-row"><span>Subtotal</span><b>'+money(i.subtotal)+'</b></div><div class="v5-row"><span>GST</span><b>'+money(i.gst)+'</b></div><div style="display:flex;justify-content:space-between;margin-top:16px"><b>Total due</b><span class="invoice-total">'+money(i.total)+'</span></div><div class="v5-card"><b>Payment details</b><div class="v5-muted">Bank details and payment instructions go here.</div></div><div class="v5-actions"><button class="v5-btn" onclick="alert('Approval step ready. Sending/PDF automation will be connected in the secure backend.')">Approve</button><button class="v5-btn secondary" onclick="window.print()">Print / Save PDF</button></div></div>'};document.getElementById('v5-tabs').onclick=e=>{let b=e.target.closest('button');if(!b)return;document.querySelectorAll('.v5-tabs button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.v5-panel').forEach(x=>x.classList.remove('active'));document.getElementById('v5-'+b.dataset.v5).classList.add('active');if(b.dataset.v5==='customers')customers();if(b.dataset.v5==='calendar')v5Cal('week');if(b.dataset.v5==='invoices')invoices()};document.getElementById('v5-search').oninput=customers;customers();v5Cal('week');invoices()})();</script></body></html>
+<section id="v5-hub" style="margin:16px 0"><div class="v5-card"><div class="v5-title">AI Business Hub</div><div class="v5-muted">Customers, calendar, professional invoices, email and bank workspace.</div><div class="v5-tabs" id="v5-tabs"><button class="active" data-v5="customers">Customers</button><button data-v5="calendar">Calendar</button><button data-v5="invoices">Invoices</button><button data-v5="email">Email</button><button data-v5="bank">Bank</button></div></div><div class="v5-panel active" id="v5-customers"><div class="v5-card"><div class="v5-title">Customers</div><input class="v5-input" id="v5-search" placeholder="Search customers"><button class="v5-btn" onclick="v5AddCustomer()">+ Add customer</button><div id="v5-customers-list"></div></div><div class="v5-card" id="v5-customer-detail"><div class="v5-muted">Select a customer to see their business record.</div></div></div><div class="v5-panel" id="v5-calendar"><div class="v5-card"><div class="v5-title">Calendar</div><div class="v5-actions"><button class="v5-btn secondary" onclick="v5Cal('day')">Day</button><button class="v5-btn secondary" onclick="v5Cal('week')">Week</button><button class="v5-btn secondary" onclick="v5Cal('month')">Month</button><button class="v5-btn" onclick="v5AddAppt()">+ Appointment</button></div><div id="v5-calendar-list"></div></div></div><div class="v5-panel" id="v5-invoices"><div class="v5-card"><div class="v5-title">Professional invoices</div><div class="v5-muted">Customer-ready invoice preview with numbering, dates, line items, GST and payment details.</div><p><button class="v5-btn" onclick="v5NewInvoice()">+ New invoice</button></p><div id="v5-invoices-list"></div><div id="v5-invoice-preview"></div></div></div><div class="v5-panel" id="v5-email"><div class="v5-card"><div class="v5-title">Business email</div><div class="v5-muted">Secure Gmail/Outlook OAuth connection will be added through the production backend. The AI will classify enquiries, quote requests, job changes and invoices, then draft replies for approval.</div><button class="v5-btn" onclick="alert('Email connection is reserved for the secure OAuth/backend phase.')">Connect email</button></div></div><div class="v5-panel" id="v5-bank"><div class="v5-card"><div class="v5-title">Bank & payments</div><div class="v5-muted">Secure open-banking connection will be added through a backend/provider. No bank passwords are collected here.</div><div class="v5-row"><span>Customer payments</span><b>Match to invoice</b></div><div class="v5-row"><span>Supplier transactions</span><b>Categorise</b></div><div class="v5-row"><span>Unmatched payments</span><b>Review</b></div><button class="v5-btn" style="margin-top:12px" onclick="alert('Bank connection is reserved for the secure backend/open-banking phase.')">Connect bank</button></div></div></section><script>(function(){const K='tradieAI_v5';let d=JSON.parse(localStorage.getItem(K)||'null')||{customers:[],appts:[],invoices:[]};const save=()=>localStorage.setItem(K,JSON.stringify(d));const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));const money=n=>'$'+Number(n||0).toFixed(2);function customers(){let q=(document.getElementById('v5-search').value||'').toLowerCase();document.getElementById('v5-customers-list').innerHTML=d.customers.filter(c=>(c.name+' '+c.phone+' '+c.email).toLowerCase().includes(q)).map(c=>'<div class="v5-row"><div><b>'+esc(c.name)+'</b><div class="v5-muted">'+esc(c.phone||'')+' · '+esc(c.email||'')+'</div></div><button class="v5-btn secondary" onclick="v5OpenCustomer(''+c.id+'')">Open</button></div>').join('')||'<p class="v5-muted">No customers yet.</p>'}window.v5AddCustomer=()=>{let n=prompt('Customer name');if(!n)return;d.customers.push({id:Date.now(),name:n,phone:prompt('Phone (optional)')||'',email:prompt('Email (optional)')||'',address:prompt('Address (optional)')||'',jobs:[],invoices:[],payments:[],notes:[]});save();customers()};window.v5OpenCustomer=id=>{let c=d.customers.find(x=>String(x.id)===String(id));document.getElementById('v5-customer-detail').innerHTML='<div class="v5-title">'+esc(c.name)+'</div><div class="v5-muted">'+esc(c.phone||'No phone')+' · '+esc(c.email||'No email')+'<br>'+esc(c.address||'No address')+'</div><p><b>Jobs:</b> '+c.jobs.length+' &nbsp; <b>Invoices:</b> '+c.invoices.length+' &nbsp; <b>Payments:</b> '+c.payments.length+'</p><div class="v5-muted">This customer record is designed to become the single place for jobs, money, communication, calendar and AI history.</div>'};window.v5Cal=mode=>{document.getElementById('v5-calendar-list').innerHTML='<div class="v5-card"><b>'+mode.toUpperCase()+' VIEW</b></div>'+d.appts.map(a=>'<div class="v5-row"><div><b>'+esc(a.title)+'</b><div class="v5-muted">'+esc(a.date)+' '+esc(a.time)+' · '+esc(a.person||'Unassigned')+'</div></div><span>'+esc(a.status||'Booked')+'</span></div>').join('')};window.v5AddAppt=()=>{let t=prompt('Job / appointment');if(!t)return;d.appts.push({title:t,date:prompt('Date YYYY-MM-DD')||'',time:prompt('Time')||'',person:prompt('Assign person')||'',status:'Booked'});save();v5Cal('week')};window.v5NewInvoice=()=>{let c=prompt('Customer');if(!c)return;let j=prompt('Job description')||'Services',l=+prompt('Labour total')||0,m=+prompt('Materials total')||0,s=l+m,g=+(s*.1).toFixed(2);d.invoices.push({id:Date.now(),number:'INV-'+String(d.invoices.length+1).padStart(4,'0'),customer:c,job:j,labour:l,materials:m,subtotal:s,gst:g,total:s+g,date:new Date().toISOString().slice(0,10),due:new Date(Date.now()+14*864e5).toISOString().slice(0,10),status:'Draft'});save();invoices()};function invoices(){document.getElementById('v5-invoices-list').innerHTML=d.invoices.map(i=>'<div class="v5-row"><div><b>'+i.number+'</b> · '+esc(i.customer)+'<div class="v5-muted">'+esc(i.job)+' · '+money(i.total)+'</div></div><button class="v5-btn secondary" onclick="v5PreviewInvoice(''+i.id+'')">Preview</button></div>').join('')||'<p class="v5-muted">No invoices yet.</p>'}window.v5PreviewInvoice=id=>{let i=d.invoices.find(x=>String(x.id)===String(id));document.getElementById('v5-invoice-preview').innerHTML='<div class="invoice-paper"><div class="invoice-head"><div><div style="font-size:28px;font-weight:900">INVOICE</div><b>'+i.number+'</b><div class="v5-muted">Issued '+i.date+' · Due '+i.due+'</div></div><div><b>YOUR BUSINESS</b><div class="v5-muted">ABN · Phone · Email</div></div></div><div style="margin:18px 0"><b>Bill to</b><div>'+esc(i.customer)+'</div><div class="v5-muted">'+esc(i.job)+'</div></div><div class="v5-row"><span>Labour / services</span><b>'+money(i.labour)+'</b></div><div class="v5-row"><span>Materials</span><b>'+money(i.materials)+'</b></div><div class="v5-row"><span>Subtotal</span><b>'+money(i.subtotal)+'</b></div><div class="v5-row"><span>GST</span><b>'+money(i.gst)+'</b></div><div style="display:flex;justify-content:space-between;margin-top:16px"><b>Total due</b><span class="invoice-total">'+money(i.total)+'</span></div><div class="v5-card"><b>Payment details</b><div class="v5-muted">Bank details and payment instructions go here.</div></div><div class="v5-actions"><button class="v5-btn" onclick="alert('Approval step ready. Sending/PDF automation will be connected in the secure backend.')">Approve</button><button class="v5-btn secondary" onclick="window.print()">Print / Save PDF</button></div></div>'};document.getElementById('v5-tabs').onclick=e=>{let b=e.target.closest('button');if(!b)return;document.querySelectorAll('.v5-tabs button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.v5-panel').forEach(x=>x.classList.remove('active'));document.getElementById('v5-'+b.dataset.v5).classList.add('active');if(b.dataset.v5==='customers')customers();if(b.dataset.v5==='calendar')v5Cal('week');if(b.dataset.v5==='invoices')invoices()};document.getElementById('v5-search').oninput=customers;customers();v5Cal('week');invoices()})();</script>
+<section id="v7-connected-hub" style="margin:16px 0;">
+  <div class="v5-card">
+    <div class="v5-title">Connected Business Intelligence</div>
+    <div class="v5-muted">Connect business email and bank data, then let the AI organise relevant information into the correct customer file.</div>
+  </div>
+
+  <div class="v7-connect">
+    <div class="v7-connect-head">
+      <div><b>Business email</b><div class="v5-muted">Gmail / Microsoft 365</div></div>
+      <span id="v7-email-status" class="v7-status">Not connected</span>
+    </div>
+    <div class="v5-muted" style="margin-top:8px">AI can identify customer enquiries, quotes, job changes, invoices, receipts, supplier messages, appointment requests and attachments.</div>
+    <div class="v7-source">
+      <button onclick="v7ConnectEmail('Gmail')">Connect Gmail</button>
+      <button onclick="v7ConnectEmail('Microsoft 365')">Connect Microsoft 365</button>
+    </div>
+  </div>
+
+  <div class="v7-connect">
+    <div class="v7-connect-head">
+      <div><b>Bank account</b><div class="v5-muted">Secure open-banking / CDR connection</div></div>
+      <span id="v7-bank-status" class="v7-status">Not connected</span>
+    </div>
+    <div class="v5-muted" style="margin-top:8px">AI can identify customer payments, supplier transactions, recurring costs and transactions that may belong to a job or invoice.</div>
+    <div class="v7-source">
+      <button onclick="v7ConnectBank()">Connect bank</button>
+      <button onclick="v7BankReview()">Review matches</button>
+    </div>
+  </div>
+
+  <div class="v5-card">
+    <div class="v5-title">AI customer-file matching</div>
+    <div class="v5-muted">The AI builds a customer record from information it is authorised to access, while uncertain matches go into review instead of being silently attached.</div>
+    <div id="v7-customer-files"></div>
+  </div>
+</section>
+
+<script>
+(function(){
+ const KEY='tradieAI_v7_connections';
+ let s;
+ try{s=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){s=null}
+ s=s||{email:null,bank:null,items:[]};
+ function save(){localStorage.setItem(KEY,JSON.stringify(s))}
+ function esc(x){return String(x??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+ window.v7ConnectEmail=function(provider){
+   alert(provider+' connection will use OAuth in the production backend. You will sign in at '+provider+' and approve the exact permissions; the app will not ask for your email password.');
+   s.email={provider,connected:false};save();
+   document.getElementById('v7-email-status').textContent='Ready for OAuth';
+   document.getElementById('v7-email-status').classList.add('ready');
+ };
+ window.v7ConnectBank=function(){
+   alert('Bank connection will use a secure Australian open-banking/CDR flow through an accredited/provider-backed connection. Bank passwords are never entered into Tradie AI.');
+   s.bank={connected:false};save();
+   document.getElementById('v7-bank-status').textContent='Ready for secure connection';
+   document.getElementById('v7-bank-status').classList.add('ready');
+ };
+ window.v7BankReview=function(){
+   alert('Once a bank connection is active, transactions will appear here for AI matching to customers, jobs and invoices. Uncertain matches will require confirmation.');
+ };
+ function render(){
+   const el=document.getElementById('v7-customer-files'); if(!el)return;
+   const base=(window.d&&window.d.jobs)||[];
+   const names=[...new Set(base.map(x=>x.customer).filter(Boolean))];
+   el.innerHTML=names.length?names.map(name=>`<div class="v7-file"><b>${esc(name)}</b><div class="v5-muted">Jobs: ${base.filter(x=>x.customer===name).length} · Email, attachments and bank matches will appear here when connected.</div><div class="v7-review"><span class="v7-confidence">MATCHING RULE</span><br><span class="v5-muted">Exact/strong matches can be attached automatically; ambiguous matches are held for approval.</span></div></div>`).join(''):'<div class="v5-muted">Customer files will appear here as customers are added.</div>';
+ }
+ render();
+})();
+</script>
+
+<section id="v8-followups" style="margin:16px 0;">
+  <div class="v5-card">
+    <div class="v5-title">Customer Follow-ups</div>
+    <div class="v5-muted">Turn old customers into repeat business with helpful service reminders — without spamming them.</div>
+  </div>
+  <div class="v8-follow">
+    <div class="v5-title">AI follow-up opportunities</div>
+    <div class="v5-muted">The AI can look at completed jobs and customer history and suggest when a service reminder may make sense.</div>
+    <div class="v8-follow-grid" style="margin-top:10px">
+      <button class="v5-btn" onclick="v8ScanFollowups()">Find customers to follow up</button>
+      <button class="v5-btn secondary" onclick="v8CreateReminder()">Create follow-up reminder</button>
+    </div>
+    <div id="v8-follow-list"></div>
+  </div>
+</section>
+<script>
+(function(){
+ const KEY='tradieAI_v8_followups';
+ let state; try{state=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){state=null}
+ state=state||{queue:[],templates:[]};
+ function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+ function esc(x){return String(x??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+ function render(){
+  const el=document.getElementById('v8-follow-list'); if(!el)return;
+  el.innerHTML=state.queue.length?state.queue.map((x,i)=>`<div class="v8-follow-item">
+   <div style="display:flex;justify-content:space-between;gap:8px"><b>${esc(x.customer)}</b><span class="v8-tag ${x.status==='Ready'?'ready':'due'}">${esc(x.status)}</span></div>
+   <div class="v5-muted">${esc(x.reason)}</div>
+   <div class="v5-actions" style="margin-top:8px">
+    <button class="v5-btn secondary" onclick="v8Draft(${i})">Draft email</button>
+    <button class="v5-btn secondary" onclick="v8Snooze(${i})">Snooze</button>
+   </div></div>`).join(''):'<div class="v5-muted" style="margin-top:10px">No follow-ups queued.</div>';
+ }
+ window.v8ScanFollowups=function(){
+  const jobs=(window.d&&window.d.jobs)||[];
+  const customers=[...new Set(jobs.map(j=>j.customer).filter(Boolean))];
+  state.queue=customers.slice(0,20).map(name=>({customer:name,reason:'Past customer with a recorded job — consider a service check-in or maintenance reminder.',status:'Ready'}));
+  save();render();
+  alert(state.queue.length+' customer follow-up opportunities found.');
+ };
+ window.v8CreateReminder=function(){
+  const name=prompt('Customer to follow up'); if(!name)return;
+  const when=prompt('When? e.g. 6 months after service, or Friday')||'Later';
+  state.queue.push({customer:name,reason:'Follow-up reminder: '+when,status:'Ready'});
+  save();render();
+ };
+ window.v8Draft=function(i){
+  const x=state.queue[i]; if(!x)return;
+  const subject='Checking in after your recent service';
+  const body=`Hi ${x.customer},\\n\\nJust checking in after the work we completed for you. If everything is running well, great. If you need anything or would like us to arrange a service/check-up, just reply to this email.\\n\\nThanks,\\nYour Business`;
+  alert('EMAIL DRAFT\\n\\nSubject: '+subject+'\\n\\n'+body+'\\n\\nNothing is sent automatically — the customer email must be reviewed and approved first.');
+ };
+ window.v8Snooze=function(i){state.queue.splice(i,1);save();render()};
+ render();
+})();
+</script>
+</body></html>
